@@ -1,0 +1,8 @@
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+main_old.ipynb
+nested_cv_old.py
+
+submission.csv

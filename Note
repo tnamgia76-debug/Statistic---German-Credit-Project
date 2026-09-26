@@ -1,0 +1,45 @@
+
+Cross-validation nghĩa là:
+thay vì chỉ test trên 1 phần duy nhất, ta lần lượt đổi phần test.
+
+Ví dụ 5-fold CV:
+
+Lần 1:
+Train = Fold 2+3+4+5
+Test  = Fold 1
+
+Lần 2:
+Train = Fold 1+3+4+5
+Test  = Fold 2
+
+Lần 3:
+Train = Fold 1+2+4+5
+Test  = Fold 3
+
+Lần 4:
+Train = Fold 1+2+3+5
+Test  = Fold 4
+
+Lần 5:
+Train = Fold 1+2+3+4
+Test  = Fold 5
+
+Như vậy mỗi dòng dữ liệu được dùng làm test đúng 1 lần. Đó là Cross-Validation.
+
+
+Outer Fold là fold thuộc vòng đánh giá bên ngoài
+Outer Validation = Fold 1 = 128
+Outer training = Fold 2 + Fold 3 + Fold 4 + Fold 5 = 512
+
+Ví dụ Với Logistic có các config C = 0.1 C = 1 C = 10
+=> Muốn biết C nào là tốt nhất
+
+Nhưng ta k thể train trên 512, rồi thử Các C trên 128
+Nhẽ ra 128 là bài thi cuối, dùng chính nó để chọn đáp án thì tương đương với nhìn vào test set để tune model 
+=> Kết quả lúc đó k công bằng
+
+
+=> Phải có Inner Fold
+Thay vì dùng 128 Outer validation để chọn C => Ta chỉ dùng 512 outer-training để chọn Model
+Do đó ta lại chia 512 đó ra để thử config => inner CV
+Outer CV là outer cross validation là đảo qua đảo lại các fold sao cho mỗi 1 fold dc làm validation 1 lần

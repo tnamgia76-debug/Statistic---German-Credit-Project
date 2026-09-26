@@ -1,0 +1,4 @@
+set,rows,good,bad,purpose
+development,640,480,160,nested CV and model selection
+historical_benchmark,160,120,40,diagnostic check after freezing the rule
+competition,200,,,final predictions only
